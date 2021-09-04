@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>What Footwear to Use!</title>
+    <script>
+        function footwear() {
+            var user_weather = document.getElementById('weatherInputBox').value;
+           
+
+            if (user_weather == 'hot') {
+                alert("Wear sandals!");
+            }
+            else if (user_weather == 'rain') {
+                alert("Weat galoshoes!");
+            }
+            else if (user_weather == 'snow') {
+                alert("Wear boots!");
+            }
+            else if (user_weather != 'snow' , 'rain' , 'hot') {
+                alert("Wear shoes");
+            }
+
+        }
+    </script>
+</head>
+<body>
+Please enter Weather (ex. hot, rain, or snow): <input type="text" id="weatherInputBox">
+<button type="button" onclick="footwear()">Suggest</button>
+</body>
+</html>

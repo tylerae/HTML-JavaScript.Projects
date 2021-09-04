@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<title>Investment Calculator</title>
+		<style>
+			#resultDiv {
+				margin-top:20px;
+				font-weight:bold;
+				font-size:25px;
+			}
+			body {
+				font-family:sans-serif;
+				background-color:#f9f9f9;
+				padding-top:10%;
+				padding-left:30%;
+				padding-right:30%;
+				text-align:center;
+			}
+			input {
+				text-align:center;
+			}
+			#displayTable {
+				margin-left:auto;
+				margin-right:auto;
+			}
+			.tableLeft {
+				text-align:left;
+			}
+		</style>
+		<script type="text/javascript">
+			/* Defining Table
+			 * Input: four integers
+			 * Processing: calculate future value from the four inputs
+			 * Output: The calculated future value
+			 */
+			function doFV() {
+				var amountInvested = parseFloat(document.getElementById("amountInvested").value);
+				var annualRate = parseFloat(document.getElementById("annualRate").value);
+				var numberOfYears = parseFloat(document.getElementById("numberOfYears").value);
+				var periodsPerYear = parseFloat(document.getElementById("periodsPerYear").value);
+				var futureValue = computeFutureValue(amountInvested,annualRate,numberOfYears,periodsPerYear);
+
+			
+				
+				document.getElementById("resultDiv").innerHTML = "$ " + futureValue;
+			}
+			
+			function computeFutureValue(amountInvested,annualRate,numberOfYears,periodsPerYear) {
+				var a = amountInvested;
+				var r = annualRate/periodsPerYear;
+				var n = periodsPerYear * numberOfYears;
+				var futureValue = (a * ((1 + r) ** n));
+				return futureValue.toFixed(2);
+			}
+			
+			function reset() {
+				document.getElementById("amountInvested").value = "";
+				document.getElementById("annualRate").value = "";
+				document.getElementById("numberOfYears").value = "";
+				document.getElementById("periodsPerYear").value = "";
+			}
+		</script>
+	</head>
+	<body>
+		<div id="form">
+			<h1>Investment Calculator</h1>
+			<table id="displayTable">
+				<tr>
+					<td class="tableLeft">
+						Amount Invested (principal): 
+					</td>
+					<td>
+						<input type="text" id="amountInvested" size="7"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tableLeft">
+						Annual Rate (example: .08): 
+					</td>
+					<td>
+						<input type="text" id="annualRate" size="7"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tableLeft">
+						Number of Years: 
+					</td>
+					<td>
+						<input type="text" id="numberOfYears" size="7"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tableLeft">
+						Periods Per Year: 
+					</td>
+					<td>
+						<input type="text" id="periodsPerYear" size="7"/>
+					</td>
+				</tr>
+			</table>
+			<p><button type="button" onclick="doFV()">Compute Future Value</button></p>
+			<p><button type="button" onclick="reset()">Reset</button></p>
+		</div>
+		<div id="resultDiv"></div>
+	</body>
+</html>
+@tylerae

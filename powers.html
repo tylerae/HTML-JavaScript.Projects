@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What are the powers of 2?</title>
+	<script>
+		function powers() {
+			var answer = "1";
+			var power = 0;
+			for (var toThePowerOf = 1; PowerOf <= 31; PowerOf++) {
+				power = Math.pow(2,PowerOf);
+				answer += ", " + power;
+			}
+			document.getElementById("result").innerHTML = answer;
+		}
+	</script>
+</head>
+<body>
+<div id="form">
+<h1>View the Powers of 2 <br/> (Up to 2<sup>31</sup>)</h1>
+<p><button type="button" onclick="powers()">Click to View</button></p>
+</div>
+<div id="result"></div>
+</body>
+</html>

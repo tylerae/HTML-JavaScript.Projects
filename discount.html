@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Discount Calculator</title>
+    <script>
+        function price() {
+            var item_price = parseFloat(document.getElementById('priceBox').value);
+            var dayOfWeek = new date().getDay()
+            if (dayOfWeek == 2 || dayOfWeek == 3 ) {
+                if (item_price < 50) {
+                    tax_pri = item_price * .06
+                    total = tax_pri + item_price
+                }
+                else if (item_price >= 50){
+                    tax_pri = item_price * .06
+                    discount = tax_pri * .10
+                    total_dis = tax_pri - discount
+                }
+            }
+            else {
+                if (item_price < 50) {
+                    tax_pri = item_price * .06
+                    total = tax_pri + item_price   
+                }       
+            }
+        }
+
+    </script>
+</head>
+<body>
+Please Enter Your Subtotal Amount: <input type="text" id="priceBox">
+<button type="button" onclick="price()">Calculate</button>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<title>Loan Calculator</title>
+		<style>
+			.resultDiv {
+				margin-top:20px;
+				margin-bottom:20px;
+				font-weight:bold;
+				font-size:25px;
+			}
+			body {
+				font-family:sans-serif;
+				background-color:#f9f9f9;
+				padding-top:10%;
+				padding-left:30%;
+				padding-right:30%;
+				text-align:center;
+			}
+			input {
+				text-align:center;
+			}
+			.displayTable {
+				margin-left:auto;
+				margin-right:auto;
+			}
+			.tableLeft {
+				text-align:left;
+			}
+		</style>
+		<script type="text/javascript">
+			/* Defining Table
+			 * Input: five integers
+			 * Processing: calculate loan payment amount and payments paid to date from the five inputs
+			 * Output: The calculated loan payment amount and payments paid to date
+			 */
+			function doPayment() {
+				var principal = parseFloat(document.getElementById("principal").value);
+				var annualRate = parseFloat(document.getElementById("annualRate").value);
+				var years = parseFloat(document.getElementById("years").value);
+				var paymentsPerYear = parseFloat(document.getElementById("paymentsPerYear").value);
+				var numberOfPaymentsPaidToDate = parseFloat(document.getElementById("numberOfPaymentsPaidToDate").value);
+				var payment = computePayment(principal, annualRate, years, paymentsPerYear);
+				
+				document.getElementById("paymentResultDiv").innerHTML = "$ " + payment;
+			}
+			function doBalance() {
+				var principal = parseFloat(document.getElementById("principal").value);
+				var annualRate = parseFloat(document.getElementById("annualRate").value);
+				var years = parseFloat(document.getElementById("years").value);
+				var paymentsPerYear = parseFloat(document.getElementById("paymentsPerYear").value);
+				var numberOfPaymentsPaidToDate = parseFloat(document.getElementById("numberOfPaymentsPaidToDate").value);
+				var balance = computeBalance(principal, annualRate, years, paymentsPerYear, numberOfPaymentsPaidToDate);
+				
+				document.getElementById("balanceResultDiv").innerHTML = "$ " + balance;
+			}
+			function computePayment(principal, annualRate, years, paymentsPerYear) {
+				var a = principal;
+				var r = annualRate/paymentsPerYear;
+				var n = paymentsPerYear * years;
+				var payment = ((a * r)/(1-((1 + r)**-n)));
+				return payment.toFixed(2);
+			}
+			function computeBalance(principal, annualRate, years, paymentsPerYear, numberOfPaymentsPaidToDate) {
+				var a = principal;
+				var r = annualRate/paymentsPerYear;
+				var p = computePayment(principal, annualRate, years, paymentsPerYear);
+				var n = numberOfPaymentsPaidToDate;
+				var balance = ((a * ((1 + r) ** n)) - ((p*(((1 + r)**n) - 1)) / r));
+				return balance.toFixed(2);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="form">
+			<h1>Loan Calculator</h1>
+			<table class="displayTable">
+				<tr>
+					<td class="tableLeft">
+						Amount Borrowed (principal): 
+					</td>
+					<td>
+						<input type="text" id="principal" size="7"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tableLeft">
+						Annual Interest Rate (example: .065): 
+					</td>
+					<td>
+						<input type="text" id="annualRate" size="7"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tableLeft">
+						Number of Years: 
+					</td>
+					<td>
+						<input type="text" id="years" size="7"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tableLeft">
+						Payments Per Year: 
+					</td>
+					<td>
+						<input type="text" id="paymentsPerYear" size="7"/>
+					</td>
+				</tr>
+			</table>
+			<p><button type="button" onclick="doPayment()">Compute Payment</button></p>
+			<div id="paymentResultDiv" class="resultDiv"></div>
+			<table class="displayTable">
+				<tr>
+					<td class="tableLeft">
+						Number of Payments Paid to Date: 
+					</td>
+					<td>
+						<input type="text" id="numberOfPaymentsPaidToDate" size="7"/>
+					</td>
+				</tr>
+			</table>
+			<p><button type="button" onclick="doBalance()">Compute Remaining Balance</button></p>
+		</div>
+		<div id="balanceResultDiv" class="resultDiv"></div>
+	</body>
+</html>

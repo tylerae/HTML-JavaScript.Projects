@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quarts to Liters conversion</title>
+<script>
+    function convert_to() {
+        var text = document.getElementById('quartsInputBox').value;
+        var quarts = parseFloat(text);
+        let a = 1, b = 3, c = -2;
+        let result = a + b * 7 % 4 - c;
+        
+        document.getElementById('outputDiv').innerHTML = result;
+    }
+</script>
+
+</head>
+<body>
+ Please enter amount in quarts: <input type="text" id="quartsInputBox">
+ <button type="button" onclick="convert_to()">Convert</button>
+ <div id="outputDiv"></div>
+</body>
+</html>

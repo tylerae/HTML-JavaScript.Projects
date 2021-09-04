@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Your Math Skills!</title>
+    <script>
+        function quickmath() {
+            var x = parseFloat(document.getElementById('num1InputBox').value);
+            var sign = document.getElementById('signInputBox').value;
+            var y = parseFloat(document.getElementById('num2InputBox').value);
+            var answer = parseFloat(document.getElementById('answerInputBox').value);
+            
+            if (sign == '+') {
+                correct = x + y 
+                if (correct == answer){
+                    alert("Correct! Good Job!")
+                }
+                else if (correct != answer) {
+                    alert('Incorrect! Try Again!')
+                }
+            }
+            else if (sign == '*') {
+                correct = x * y
+                if (correct == answer) {
+                    alert('Correct! Good Job!')
+                }
+                else if (correct != answer) {
+                    alert('Incorrect! Try Again!')
+                }
+            }
+            else if (sign == '-'){
+                correct = x - y 
+                if (correct == answer){
+                    alert('Correct! Good Job.')
+                }
+                else if (correct != answer)
+                    alert('Incorrect! Try Again.')
+            }
+            else if (sign == '/'){
+                correct = x / y 
+                if (correct == answer){
+                    alert('Correct! Good Job.')
+                }
+                else if (correct != answer)
+                    alert('Incorrect! Try Again.')
+            }
+            
+            
+
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="num1InputBox"> 
+<input type="text" id="signInputBox"> 
+<input type="text" id="num2InputBox"> 
+<input type="text" id="answerInputBox">
+
+<button type="button" onclick="quickmath()">Check</button>
+</body>
+</html>

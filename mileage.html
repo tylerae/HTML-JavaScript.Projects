@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Miles per Gallon</title>
+<script>
+    function convert_to() {
+        var text = document.getElementById('milesInputBox').value;
+        var text1 = document.getElementById('gasInputBox').value;
+        var miles = parseFloat(text);
+        var gas = parseFloat(text1);
+        var MpG = miles / gas ; 
+        document.getElementById('outputDiv').innerHTML = (MpG.toFixed(2));
+    }
+</script>
+
+</head>
+<body>
+ Please enter number of miles on odometer (Numbers only): <input type="text" id="milesInputBox">
+ Please enter gallons of gas used: <input type="text" id="gasInputBox">
+ <button type="button" onclick="convert_to()">Convert</button>
+<p>
+ Miles per Gallon:<div id='outputDiv'></div>
+</p>
+</body>
+</html>

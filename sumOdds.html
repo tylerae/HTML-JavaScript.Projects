@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Sum of Odd Numbers</title>
+
+<script>
+function sumOdds() {
+    var input = parseInt(document.getElementById('integerBox').value);
+    var result = 0;
+    var oddNum = 1;
+    for (;  oddNum <= input;  oddNum++) {
+        if (oddNum % 2 != 0) {
+            result = oddNum + result;
+        }
+    }
+    document.getElementById('outputDiv').innerHTML = result ;
+}
+</script>
+</head>
+
+<body>
+Please enter an integer: <input type="text" id="integerBox"><br>  
+<button type="button" onclick="sumOdds()">Sum</button>  
+<div id="outputDiv"></div>  
+</body>
+</html>
